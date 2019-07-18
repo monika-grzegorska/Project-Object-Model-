@@ -36,15 +36,35 @@ namespace PAGE_OBJECT_MODEL_TESTS.Pages
             //ARRANGE
             HomePage home = new HomePage(driver);
             home.goToPage();
-
-            //ACT
             SignIn signIn = home.goToSignInPage();
+
+            //ACT 
             CreateAnAccount createAnAccount = signIn.addEmailAddressAndGoToCreateAnAccountPage();
             createAnAccount.addAllInformationsToForm();
-
-            //ASSERT
-
         }
+        [Test]
+        public void AP_Given_LogInIntoAccount_When_ValidInformationIsUsed_Then_UserIsNowLogIn()
+        {
+            //ARRANGE
+            HomePage home = new HomePage(driver);
+            home.goToPage();
+            SignIn signIn = home.goToSignInPage();
+
+            //ACT
+            AccountPage logInIntoAccountPage = signIn.logInIntoAccountPage();
+        }
+        [Test]
+        public void AP_Given_AddNewWishlist_When_Add_Then_NewWishlistAdded()
+        {
+            //ARRANGE
+            HomePage home = new HomePage(driver);
+            home.goToPage();
+            SignIn signIn = home.goToSignInPage();
+            AccountPage logInIntoAccountPage = signIn.logInIntoAccountPage();
+            WishlistPage openWishlistPage = logInIntoAccountPage.goToWishlist();
+            openWishlistPage.addWishlistName();
+        }
+
         [TearDown]
         public void TearDown()
         {

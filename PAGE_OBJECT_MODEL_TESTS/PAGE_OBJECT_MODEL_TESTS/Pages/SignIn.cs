@@ -40,5 +40,13 @@ namespace PAGE_OBJECT_MODEL_TESTS.Pages
             return new CreateAnAccount(driver);
         }
 
+        public AccountPage logInIntoAccountPage()
+        {
+            logInEmail.SendKeys("bubu@bobo.com");
+            logInPassword.SendKeys("bestharryever");
+            signInButton.Click();
+            return new AccountPage(driver);
+        }
+
     }
 }
