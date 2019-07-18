@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using excel = Microsoft.Office.Interop.Excel;
+
 
 namespace PAGE_OBJECT_MODEL_TESTS.Pages
 {
@@ -14,10 +14,12 @@ namespace PAGE_OBJECT_MODEL_TESTS.Pages
     {
         private IWebDriver driver;
         private WebDriverWait wait;
+        TestHelper testhelper = new TestHelper();
 
         public WishlistPage(IWebDriver driver)
         {
             this.driver = driver;
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(4));
             PageFactory.InitElements(driver, this);
         }
 
@@ -26,17 +28,13 @@ namespace PAGE_OBJECT_MODEL_TESTS.Pages
         [FindsBy(How = How.Id, Using = "submitWishlist")]
         private IWebElement saveWishlistButton;
 
-        public WishlistPage addWishlistName()
+        public void addWishlistName()
         {
-
-            excel.Application excelapp = new excel.Application();
-            excel.Workbook excelworkbook = excelapp.Workbooks.Open(@"D:\Monika\Tests\Project-Object-Model-\PAGE_OBJECT_MODEL_TESTS\PAGE_OBJECT_MODEL_TESTS\wishlist.xlsx"); // gdzie jest nasz plik
-            excel._Worksheet excelworksheet = excelworkbook.Sheets[1]; // numer zakładki z excela w której są dane 
-
-            wishlistName.SendKeys(excelworksheet.Cells[1][1]);
+            wishlistName.SendKeys(testhelper.ExcelSetup(1,1));
             saveWishlistButton.Click();
 
-            return new WishlistPage(driver);
         }
     }
+
+
 }
