@@ -26,16 +26,17 @@ namespace PAGE_OBJECT_MODEL_TESTS.Pages
         [FindsBy(How = How.Id, Using = "submitWishlist")]
         private IWebElement saveWishlistButton;
 
-        public void addWishlistName()
+        public WishlistPage addWishlistName()
         {
 
             excel.Application excelapp = new excel.Application();
-            excel.Workbook excelworkbook = excelapp.Workbooks.Open(@"D:\Monika\Tests\Project-Object-Model-\PAGE_OBJECT_MODEL_TESTS\PAGE_OBJECT_MODEL_TESTS"); // gdzie jest nasz plik
+            excel.Workbook excelworkbook = excelapp.Workbooks.Open(@"D:\Monika\Tests\Project-Object-Model-\PAGE_OBJECT_MODEL_TESTS\PAGE_OBJECT_MODEL_TESTS\wishlist.xlsx"); // gdzie jest nasz plik
             excel._Worksheet excelworksheet = excelworkbook.Sheets[1]; // numer zakładki z excela w której są dane 
 
             wishlistName.SendKeys(excelworksheet.Cells[1][1]);
             saveWishlistButton.Click();
 
+            return new WishlistPage(driver);
         }
     }
 }
