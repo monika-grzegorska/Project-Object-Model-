@@ -65,6 +65,23 @@ namespace PAGE_OBJECT_MODEL_TESTS.Pages
             openWishlistPage.addWishlistName();
         }
 
+        [Test]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        public void AP_Given_AddNewWishlistUsingTestCase_When_Add_Then_NewWishlistAdded(int x)
+        {
+            //ARRANGE
+
+            HomePage home = new HomePage(driver);
+            home.goToPage();
+            SignIn signIn = home.goToSignInPage();
+            AccountPage logInIntoAccountPage = signIn.logInIntoAccountPage();
+            WishlistPage openWishlistPage = logInIntoAccountPage.goToWishlist();
+            openWishlistPage.addWishlistNameTestCase(x);
+        }
+
         [TearDown]
         public void TearDown()
         {

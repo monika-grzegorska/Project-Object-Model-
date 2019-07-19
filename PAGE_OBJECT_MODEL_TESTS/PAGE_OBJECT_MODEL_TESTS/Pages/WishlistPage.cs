@@ -30,10 +30,19 @@ namespace PAGE_OBJECT_MODEL_TESTS.Pages
 
         public void addWishlistName()
         {
-            wishlistName.SendKeys(testhelper.ExcelSetup(1,1));
-            saveWishlistButton.Click();
+            for (int i = 1; i <= 6; i++)
+            {
+                wishlistName.SendKeys(testhelper.ExcelSetup(i));
+                saveWishlistButton.Click();
+            }
+
 
         }
+        public void addWishlistNameTestCase(int x)
+        {
+                wishlistName.SendKeys(testhelper.ExcelSetup(x));
+                saveWishlistButton.Click();
+            }
     }
 
 
