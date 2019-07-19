@@ -68,6 +68,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="login.csv" />
     <None Include="packages.config" />
     <None Include="wishlistt.csv" />
   </ItemGroup>

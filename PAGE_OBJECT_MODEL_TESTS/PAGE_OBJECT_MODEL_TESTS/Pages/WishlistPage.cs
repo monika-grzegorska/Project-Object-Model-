@@ -40,9 +40,10 @@ namespace PAGE_OBJECT_MODEL_TESTS.Pages
         }
         public void addWishlistNameTestCase(int x)
         {
-                wishlistName.SendKeys(testhelper.ExcelSetup(x));
-                saveWishlistButton.Click();
-            }
+            wishlistName.SendKeys(testhelper.ExcelSetup(x));
+            saveWishlistButton.Click();
+        }
+       
     }
 
 
